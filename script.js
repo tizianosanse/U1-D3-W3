@@ -1,13 +1,16 @@
-const handleSubmit = (e) => {
-  !e.preventDefault();
-  console.log("submit", e);
+const button = document.querySelector("button");
+const list = document.getElementById("ul");
+const input = document.getElementById("text");
+button.onclick = function () {
+  const item = document.createElement("li");
+
+  console.log(input.value);
+  item.innerText = input.value;
+  const butt = document.createElement("button");
+  butt.innerText = "X";
+  butt.onclick = function () {
+    item.remove();
+  };
+  item.appendChild(butt);
+  list.appendChild(item);
 };
-const text = document.getElementById("text");
-text.addEventListener("keyup", (event) => {
-  console.log(event);
-  if (event.key === "Enter" && event.target.value.length > 0) {
-    console.log("Enter premuto");
-    const items = document.createElement("li");
-    items.innerText = text.value;
-  }
-});
